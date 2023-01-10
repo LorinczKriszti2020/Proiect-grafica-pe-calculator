@@ -43,7 +43,6 @@
             this.lbl_result = new System.Windows.Forms.Label();
             this.txtbox_colt1x = new System.Windows.Forms.TextBox();
             this.txtbox_colt1y = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtbox_colt2x = new System.Windows.Forms.TextBox();
             this.txtbox_colt2y = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_inter = new System.Windows.Forms.Button();
             this.listbox_result = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // drawing_board
@@ -75,27 +75,27 @@
             // 
             // btn_roots
             // 
-            this.btn_roots.Location = new System.Drawing.Point(28, 41);
+            this.btn_roots.Location = new System.Drawing.Point(28, 128);
             this.btn_roots.Name = "btn_roots";
             this.btn_roots.Size = new System.Drawing.Size(75, 23);
             this.btn_roots.TabIndex = 2;
-            this.btn_roots.Text = "Roots";
+            this.btn_roots.Text = "Radacini";
             this.btn_roots.UseVisualStyleBackColor = true;
             this.btn_roots.Click += new System.EventHandler(this.btn_roots_Click);
             // 
             // btn_vertex
             // 
-            this.btn_vertex.Location = new System.Drawing.Point(28, 70);
+            this.btn_vertex.Location = new System.Drawing.Point(28, 99);
             this.btn_vertex.Name = "btn_vertex";
             this.btn_vertex.Size = new System.Drawing.Size(75, 23);
             this.btn_vertex.TabIndex = 3;
-            this.btn_vertex.Text = "Vertex";
+            this.btn_vertex.Text = "Varf";
             this.btn_vertex.UseVisualStyleBackColor = true;
             this.btn_vertex.Click += new System.EventHandler(this.btn_vertex_Click);
             // 
             // btn_draw_rectangle
             // 
-            this.btn_draw_rectangle.Location = new System.Drawing.Point(28, 99);
+            this.btn_draw_rectangle.Location = new System.Drawing.Point(28, 41);
             this.btn_draw_rectangle.Name = "btn_draw_rectangle";
             this.btn_draw_rectangle.Size = new System.Drawing.Size(75, 23);
             this.btn_draw_rectangle.TabIndex = 4;
@@ -105,31 +105,32 @@
             // 
             // btn_troubleshoot
             // 
-            this.btn_troubleshoot.Location = new System.Drawing.Point(28, 128);
+            this.btn_troubleshoot.Location = new System.Drawing.Point(28, 613);
             this.btn_troubleshoot.Name = "btn_troubleshoot";
             this.btn_troubleshoot.Size = new System.Drawing.Size(75, 23);
             this.btn_troubleshoot.TabIndex = 5;
             this.btn_troubleshoot.Text = "Trblshoot";
             this.btn_troubleshoot.UseVisualStyleBackColor = true;
+            this.btn_troubleshoot.Visible = false;
             this.btn_troubleshoot.Click += new System.EventHandler(this.btn_troubleshoot_Click);
             // 
             // a_txtbox
             // 
-            this.a_txtbox.Location = new System.Drawing.Point(82, 536);
+            this.a_txtbox.Location = new System.Drawing.Point(140, 539);
             this.a_txtbox.Name = "a_txtbox";
             this.a_txtbox.Size = new System.Drawing.Size(100, 23);
             this.a_txtbox.TabIndex = 6;
             // 
             // c_txtbox
             // 
-            this.c_txtbox.Location = new System.Drawing.Point(82, 585);
+            this.c_txtbox.Location = new System.Drawing.Point(140, 588);
             this.c_txtbox.Name = "c_txtbox";
             this.c_txtbox.Size = new System.Drawing.Size(100, 23);
             this.c_txtbox.TabIndex = 7;
             // 
             // b_txtbox
             // 
-            this.b_txtbox.Location = new System.Drawing.Point(82, 561);
+            this.b_txtbox.Location = new System.Drawing.Point(140, 564);
             this.b_txtbox.Name = "b_txtbox";
             this.b_txtbox.Size = new System.Drawing.Size(100, 23);
             this.b_txtbox.TabIndex = 8;
@@ -137,7 +138,7 @@
             // lbl_a
             // 
             this.lbl_a.AutoSize = true;
-            this.lbl_a.Location = new System.Drawing.Point(38, 539);
+            this.lbl_a.Location = new System.Drawing.Point(118, 542);
             this.lbl_a.Name = "lbl_a";
             this.lbl_a.Size = new System.Drawing.Size(16, 15);
             this.lbl_a.TabIndex = 9;
@@ -146,7 +147,7 @@
             // lbl_b
             // 
             this.lbl_b.AutoSize = true;
-            this.lbl_b.Location = new System.Drawing.Point(38, 564);
+            this.lbl_b.Location = new System.Drawing.Point(118, 567);
             this.lbl_b.Name = "lbl_b";
             this.lbl_b.Size = new System.Drawing.Size(17, 15);
             this.lbl_b.TabIndex = 10;
@@ -155,7 +156,7 @@
             // lbl_c
             // 
             this.lbl_c.AutoSize = true;
-            this.lbl_c.Location = new System.Drawing.Point(38, 588);
+            this.lbl_c.Location = new System.Drawing.Point(118, 591);
             this.lbl_c.Name = "lbl_c";
             this.lbl_c.Size = new System.Drawing.Size(16, 15);
             this.lbl_c.TabIndex = 11;
@@ -164,7 +165,7 @@
             // lbl_result
             // 
             this.lbl_result.AutoSize = true;
-            this.lbl_result.Location = new System.Drawing.Point(399, 564);
+            this.lbl_result.Location = new System.Drawing.Point(566, 547);
             this.lbl_result.Name = "lbl_result";
             this.lbl_result.Size = new System.Drawing.Size(45, 15);
             this.lbl_result.TabIndex = 12;
@@ -172,32 +173,22 @@
             // 
             // txtbox_colt1x
             // 
-            this.txtbox_colt1x.Location = new System.Drawing.Point(269, 536);
+            this.txtbox_colt1x.Location = new System.Drawing.Point(300, 539);
             this.txtbox_colt1x.Name = "txtbox_colt1x";
             this.txtbox_colt1x.Size = new System.Drawing.Size(100, 23);
             this.txtbox_colt1x.TabIndex = 13;
             // 
             // txtbox_colt1y
             // 
-            this.txtbox_colt1y.Location = new System.Drawing.Point(269, 561);
+            this.txtbox_colt1y.Location = new System.Drawing.Point(300, 564);
             this.txtbox_colt1y.Name = "txtbox_colt1y";
             this.txtbox_colt1y.Size = new System.Drawing.Size(100, 23);
             this.txtbox_colt1y.TabIndex = 14;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(206, 539);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 15);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "x colt 1:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 564);
+            this.label2.Location = new System.Drawing.Point(246, 567);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 15);
             this.label2.TabIndex = 16;
@@ -205,14 +196,14 @@
             // 
             // txtbox_colt2x
             // 
-            this.txtbox_colt2x.Location = new System.Drawing.Point(269, 585);
+            this.txtbox_colt2x.Location = new System.Drawing.Point(460, 539);
             this.txtbox_colt2x.Name = "txtbox_colt2x";
             this.txtbox_colt2x.Size = new System.Drawing.Size(100, 23);
             this.txtbox_colt2x.TabIndex = 17;
             // 
             // txtbox_colt2y
             // 
-            this.txtbox_colt2y.Location = new System.Drawing.Point(269, 610);
+            this.txtbox_colt2y.Location = new System.Drawing.Point(460, 564);
             this.txtbox_colt2y.Name = "txtbox_colt2y";
             this.txtbox_colt2y.Size = new System.Drawing.Size(100, 23);
             this.txtbox_colt2y.TabIndex = 18;
@@ -220,7 +211,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(206, 588);
+            this.label3.Location = new System.Drawing.Point(406, 542);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 15);
             this.label3.TabIndex = 19;
@@ -229,7 +220,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(206, 613);
+            this.label4.Location = new System.Drawing.Point(406, 567);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 15);
             this.label4.TabIndex = 20;
@@ -247,7 +238,7 @@
             // 
             // btn_inter
             // 
-            this.btn_inter.Location = new System.Drawing.Point(28, 186);
+            this.btn_inter.Location = new System.Drawing.Point(28, 70);
             this.btn_inter.Name = "btn_inter";
             this.btn_inter.Size = new System.Drawing.Size(75, 23);
             this.btn_inter.TabIndex = 22;
@@ -259,16 +250,26 @@
             // 
             this.listbox_result.FormattingEnabled = true;
             this.listbox_result.ItemHeight = 15;
-            this.listbox_result.Location = new System.Drawing.Point(564, 539);
+            this.listbox_result.Location = new System.Drawing.Point(887, 542);
             this.listbox_result.Name = "listbox_result";
             this.listbox_result.Size = new System.Drawing.Size(163, 94);
             this.listbox_result.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(246, 542);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 15);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "x colt 1:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 655);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.listbox_result);
             this.Controls.Add(this.btn_inter);
             this.Controls.Add(this.btn_clear);
@@ -277,7 +278,6 @@
             this.Controls.Add(this.txtbox_colt2y);
             this.Controls.Add(this.txtbox_colt2x);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbox_colt1y);
             this.Controls.Add(this.txtbox_colt1x);
             this.Controls.Add(this.lbl_result);
@@ -317,7 +317,6 @@
         private Label lbl_result;
         private TextBox txtbox_colt1x;
         private TextBox txtbox_colt1y;
-        private Label label1;
         private Label label2;
         private TextBox txtbox_colt2x;
         private TextBox txtbox_colt2y;
@@ -326,5 +325,6 @@
         private Button btn_clear;
         private Button btn_inter;
         private ListBox listbox_result;
+        private Label label5;
     }
 }

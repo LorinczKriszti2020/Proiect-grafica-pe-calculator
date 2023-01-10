@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 
 namespace Proiect_grafica_pe_calculator
@@ -11,12 +13,13 @@ namespace Proiect_grafica_pe_calculator
 
         private void drawing_board_Paint(object sender, PaintEventArgs e)
         {
+            //axele x si y
+
             Graphics gra = this.drawing_board.CreateGraphics();
             Pen blackPen = new Pen(Color.Black, 1);
 
             e.Graphics.DrawLine(blackPen, drawing_board.Width / 2, 0, drawing_board.Width / 2, drawing_board.Width);
             e.Graphics.DrawLine(blackPen, 0, drawing_board.Height / 2, drawing_board.Width, drawing_board.Height / 2);
-
         }
 
         private void btn_roots_Click(object sender, EventArgs e)
@@ -36,9 +39,18 @@ namespace Proiect_grafica_pe_calculator
             root1 = (-double.Parse(b_txtbox.Text) + Math.Sqrt(Math.Pow(double.Parse(b_txtbox.Text), 2) - ac)) / 2 * double.Parse(a_txtbox.Text);
             root2 = (-double.Parse(b_txtbox.Text) - Math.Sqrt(Math.Pow(double.Parse(b_txtbox.Text), 2) - ac)) / 2 * double.Parse(a_txtbox.Text);
 
-            string result = Convert.ToString(root1) + " si " + Convert.ToString(root2);
+            string result = "Radacinile reale sunt: " + Convert.ToString(root1) + " si " + Convert.ToString(root2);
 
-            lbl_result.Text = result;
+            if ((Math.Pow(double.Parse(b_txtbox.Text), 2) - ac) < 0)
+            {
+                lbl_result.Text = "Radacinile sunt complexe";
+            }
+            else if ((Math.Pow(double.Parse(b_txtbox.Text), 2) - ac) == 0)
+            {
+                lbl_result.Text = "Radacina dubla este: " + Convert.ToString(root1);
+            }
+            else
+                lbl_result.Text = result;
         }
 
         private void btn_vertex_Click(object sender, EventArgs e)
@@ -77,7 +89,7 @@ namespace Proiect_grafica_pe_calculator
             pen.SetPixel(0, 0, Color.Black);    
             System.Drawing.Graphics g = drawing_board.CreateGraphics();
             
-            for (double i = vertex_x; i <= 10000; i += 0.01)
+            for (double i = 0; i <= 10000; i += 0.01)
             {
                 x = i;
                 y = (a * (x * x)) + ((b * x) + c);
@@ -114,19 +126,13 @@ namespace Proiect_grafica_pe_calculator
             g.DrawLine(blackPen, xcolt4, ycolt4, xcolt1, ycolt1);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_troubleshoot_Click(object sender, EventArgs e)
         {
             int a = int.Parse(a_txtbox.Text);
             int b = int.Parse(b_txtbox.Text);
             int c = int.Parse(c_txtbox.Text);
-            int xcolt1 = Convert.ToInt32(txtbox_colt1x.Text);
 
-            double x = xcolt1;
+            double x = 0.4384471871911697;
             double y = (a * (x * x)) + (b * x) + c;
 
             string result = Convert.ToString(y);
@@ -142,6 +148,8 @@ namespace Proiect_grafica_pe_calculator
 
         private void btn_inter_Click(object sender, EventArgs e)
         {
+            System.Drawing.Graphics g = drawing_board.CreateGraphics();
+
             int xcolt1 = Convert.ToInt32(txtbox_colt1x.Text);
             int ycolt1 = Convert.ToInt32(txtbox_colt1y.Text);
 
@@ -161,9 +169,13 @@ namespace Proiect_grafica_pe_calculator
             double x = xcolt1;
             double y = (a * (x * x)) + (b * x) + c;
 
+            Pen redPen = new Pen(Color.Red, 2);
+            int radius = 5;
+
             if (y <= Math.Max(ycolt1, ycolt3) && y >= Math.Min(ycolt1, ycolt3))
             {
-                listbox_result.Items.Add(Convert.ToString(x) + " si " + Convert.ToString(y));
+                listbox_result.Items.Add(Convert.ToString(x) + " si1 " + Convert.ToString(y)); 
+                g.DrawEllipse(redPen, (int)x + drawing_board.Width / 2 - radius, -(int)y + drawing_board.Height / 2 - radius, radius + radius, radius + radius);
             }
 
             x = xcolt2;
@@ -171,43 +183,28 @@ namespace Proiect_grafica_pe_calculator
 
             if (y <= Math.Max(ycolt2, ycolt4) && y >= Math.Min(ycolt2, ycolt4))
             {
-                listbox_result.Items.Add(Convert.ToString(x) + " si " + Convert.ToString(y));
+                listbox_result.Items.Add(Convert.ToString(x) + " si2 " + Convert.ToString(y));
+                g.DrawEllipse(redPen, (int)x + drawing_board.Width / 2 - radius, -(int)y + drawing_board.Height / 2 - radius, radius + radius, radius + radius);
             }
 
-            c += -ycolt1;
-            double x1;
-            double x2;
-
-            double ac = 4 * double.Parse(a_txtbox.Text) * double.Parse(c_txtbox.Text);
-
-            x1 = (-double.Parse(b_txtbox.Text) + Math.Sqrt(Math.Pow(double.Parse(b_txtbox.Text), 2) - ac)) / 2 * double.Parse(a_txtbox.Text);
-            x2 = (-double.Parse(b_txtbox.Text) - Math.Sqrt(Math.Pow(double.Parse(b_txtbox.Text), 2) - ac)) / 2 * double.Parse(a_txtbox.Text);
-
-            if (x1 <= Math.Max(xcolt1, xcolt4) && x1 >= Math.Min(xcolt1, xcolt4))
+            for (double i = -100; i <= 100; i += 0.01)
             {
-                listbox_result.Items.Add(Convert.ToString(x) + " si " + Convert.ToString(y));
+                x = i;
+                y = (a * (x * x)) + ((b * x) + c);
+
+                Math.Round(y, 0);
+                y = Convert.ToInt32(y);
+
+                if (y == ycolt1 || y == ycolt2)
+                {
+                    if (x <= Math.Max(xcolt1, xcolt2) && x >= Math.Min(xcolt1, xcolt2))
+                    {
+                        listbox_result.Items.Add(Convert.ToString(Math.Round(x, 3)) + " si " + Convert.ToString(y));
+                        g.DrawEllipse(redPen, (int)x + drawing_board.Width / 2 - radius, -(int)y + drawing_board.Height / 2 - radius, radius + radius, radius + radius);
+                        i = i + 1;
+                    }
+                }
             }
-            if (x2 <= Math.Max(xcolt1, xcolt4) && x2 >= Math.Min(xcolt1, xcolt4))
-            {
-                listbox_result.Items.Add(Convert.ToString(x) + " si " + Convert.ToString(y));
-            }
-
-            c += -ycolt3; 
-
-            ac = 4 * double.Parse(a_txtbox.Text) * double.Parse(c_txtbox.Text);
-
-            x1 = (-double.Parse(b_txtbox.Text) + Math.Sqrt(Math.Pow(double.Parse(b_txtbox.Text), 2) - ac)) / 2 * double.Parse(a_txtbox.Text);
-            x2 = (-double.Parse(b_txtbox.Text) - Math.Sqrt(Math.Pow(double.Parse(b_txtbox.Text), 2) - ac)) / 2 * double.Parse(a_txtbox.Text);
-
-            if (x1 <= Math.Max(xcolt2, xcolt3) && x1 >= Math.Min(xcolt2, xcolt3))
-            {
-                listbox_result.Items.Add(Convert.ToString(x) + " si " + Convert.ToString(y));
-            }
-            if (x2 <= Math.Max(xcolt2, xcolt3) && x2 >= Math.Min(xcolt2, xcolt3))
-            {
-                listbox_result.Items.Add(Convert.ToString(x) + " si " + Convert.ToString(y));
-            }
-
         }
     }
 }
